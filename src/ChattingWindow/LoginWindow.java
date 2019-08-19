@@ -1,22 +1,24 @@
 package ChattingWindow;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
-import java.awt.GridBagLayout;
-import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
-import javax.management.monitor.Monitor;
+import javax.sound.sampled.LineListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.KeyStroke;
 
-public class LoginWindow extends JFrame {
+public class LoginWindow extends JFrame implements ActionListener {
 
 	ImageIcon icon = new ImageIcon(
 			"C:\\Users\\Force\\eclipse-workspace\\Java-ChattingApp\\src\\image\\simsonPeace.jpg");
@@ -28,8 +30,8 @@ public class LoginWindow extends JFrame {
 
 	public void actionBackGround() {
 
+		// 화면구성
 		jpFormTotal = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		
 		// 상단 이미지 패널
 		jpImage = new JPanel(new FlowLayout(FlowLayout.CENTER)) {
 			@Override
@@ -39,36 +41,36 @@ public class LoginWindow extends JFrame {
 			}
 		};
 		jpImage.setBounds(0, 0, 450, 400);
-		
-		
+
 		jpFormId = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		jpFormId.add(jlId = new JLabel("ID    ", JLabel.RIGHT));
 		jpFormId.add(jtId = new JTextField(30));
-		
+
 		jpFormPw = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		jpFormPw.add(jlPw = new JLabel("PW ",JLabel.RIGHT));
+		jpFormPw.add(jlPw = new JLabel("PW ", JLabel.RIGHT));
 		jpFormPw.add(jpPassword = new JPasswordField(30));
-		
+
 		jpFormButton = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		jpFormButton.add(jbtnLogin = new JButton("Login"));
 		jpFormButton.add(jbtnJoin = new JButton("Join"));
-		
-		
+
 		jpFormTotal.add(jpFormId);
 		jpFormTotal.add(jpFormPw);
 		jpFormTotal.add(jpFormButton);
 		jpFormTotal.setBounds(0, 400, 450, 550);
+
+		// button function
 		
-		
-		//jpFormTotal.add(jpImage);
-		//jpFormTotal.add(jpFormId);
-		//jpFormTotal.add(jpFormPw);
-		//this.add(jpFormTotal);
-	
+		//마우스와 키보드 이벤트를 동시에 처리하는 핵심 코드
+		//https://luvstudy.tistory.com/37 <-이 블로그 참조
+		jbtnLogin.registerKeyboardAction(this, "Login", KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0),
+				JComponent.WHEN_FOCUSED);
+		jbtnLogin.setActionCommand("Login");
+		jbtnLogin.addActionListener(this);
+
+
 		this.add(jpImage);
 		this.add(jpFormTotal);
-		//this.add(jpFormId);
-		//this.add(jpFormPw);
 
 	}
 
@@ -85,6 +87,15 @@ public class LoginWindow extends JFrame {
 
 	public static void main(String[] args) {
 		new LoginWindow();
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		if(e.getActionCommand() == "Login") {
+			System.out.println("이벤트발생");
+		}
+
 	}
 
 }
