@@ -60,14 +60,19 @@ public class LoginWindow extends JFrame implements ActionListener {
 		jpFormTotal.setBounds(0, 400, 450, 550);
 
 		// button function
-		
-		//마우스와 키보드 이벤트를 동시에 처리하는 핵심 코드
-		//https://luvstudy.tistory.com/37 <-이 블로그 참조
-		jbtnLogin.registerKeyboardAction(this, "Login", KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0),
+
+		// 마우스와 키보드 이벤트를 동시에 처리하는 핵심 코드
+		// https://luvstudy.tistory.com/37 <-이 블로그 참조
+		jtId.registerKeyboardAction(this, "Login", KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0),
 				JComponent.WHEN_FOCUSED);
+		jpPassword.registerKeyboardAction(this, "Login", KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0),
+				JComponent.WHEN_FOCUSED);
+
 		jbtnLogin.setActionCommand("Login");
 		jbtnLogin.addActionListener(this);
 
+		jbtnJoin.setActionCommand("Join");
+		jbtnJoin.addActionListener(this);
 
 		this.add(jpImage);
 		this.add(jpFormTotal);
@@ -78,8 +83,7 @@ public class LoginWindow extends JFrame implements ActionListener {
 
 		setLayout(null);
 		actionBackGround();
-		this.pack();
-		this.setSize(450, 600);
+		this.setSize(450, 580);
 		this.setLocationRelativeTo(null); // 모니터 중앙에 위치하게 해주는 코드
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -92,10 +96,14 @@ public class LoginWindow extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		if(e.getActionCommand() == "Login") {
-			System.out.println("이벤트발생");
+		if (e.getActionCommand() == "Login") {	
+			System.out.println("로그인 발생");
 		}
 
+		if (e.getActionCommand() == "Join") {
+			new JoinWindow();
+			System.out.println("회원가입 발생");
+		}
 	}
 
 }
