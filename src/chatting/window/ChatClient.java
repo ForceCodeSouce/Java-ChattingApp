@@ -1,4 +1,4 @@
-package ChattingWindow;
+package chatting.window;
 
 import java.awt.Color;
 

@@ -1,4 +1,4 @@
-package ChattingWindow;
+package chatting.window;
 
 import java.awt.FlowLayout;
 import java.awt.Graphics;
@@ -20,8 +20,8 @@ import javax.swing.KeyStroke;
 
 public class LoginWindow extends JFrame implements ActionListener {
 
-	ImageIcon icon = new ImageIcon(
-			"C:\\Users\\Force\\eclipse-workspace\\Java-ChattingApp\\src\\image\\simsonPeace.jpg");
+	//"C:\\Users\\Force\\eclipse-workspace\\Java-ChattingApp\\src\\image\\simsonPeace.jpg");
+	ImageIcon icon = new ImageIcon("simsonPeace.jpg");
 	JPanel jpImage, jpFormId, jpFormPw, jpFormTotal, jpFormButton;
 	JLabel jlId, jlPw, jlButton;
 	JTextField jtId;

@@ -1,4 +1,4 @@
-package ChattingWindow;
+package chatting.window;
 
 import java.util.Vector;
 

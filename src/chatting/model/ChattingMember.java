@@ -1,4 +1,7 @@
-package ChattingBean;
+package chatting.model;
+
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
 public class ChattingMember {
 
@@ -7,6 +10,10 @@ public class ChattingMember {
 	private String password;
 	private String nickName;
 
+	public ChattingMember() {
+		super();
+	}
+	
 	public ChattingMember(String name, String id, String password, String nickName) {
 		super();
 		this.name = name;
@@ -14,7 +21,7 @@ public class ChattingMember {
 		this.password = password;
 		this.nickName = nickName;
 	}
-
+	
 	public String getName() {
 		return name;
 	}

@@ -1,4 +1,4 @@
-package ChattingWindow;
+package chatting.window;
 
 import java.io.IOException;
 import java.net.ServerSocket;
