@@ -35,6 +35,7 @@ public class JoinWindow extends JFrame implements ActionListener {
 		jpId.add(jbtnIdCheck = new JButton("ID Check"));
 		jpTotal.add(jpId);
 
+		// 패스워드를 입력하는 팰드
 		jpPw = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		jpPw.add(jlPw = new JLabel("PW             ", JLabel.RIGHT));
 		jpPw.add(jpPass = new JPasswordField(20));
@@ -44,6 +45,11 @@ public class JoinWindow extends JFrame implements ActionListener {
 		jpPwCon.add(jlPwCon = new JLabel("PW Check", JLabel.RIGHT));
 		jpPwCon.add(jpPassCon = new JPasswordField(20));
 		jpTotal.add(jpPwCon);
+
+		/*
+		 * if(jpPass.equals(jpPassCon)){ System.out.println("패스워드 일치"); }else {
+		 * jpPassCon.setText(""); System.out.println("패스워드 불 일치"); }
+		 */
 
 		jpName = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		jpName.add(jlName = new JLabel("NAME         "));
@@ -95,25 +101,31 @@ public class JoinWindow extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		
+
 		if (e.getActionCommand() == "ID Check") {
 			System.out.println("아이디 체크 이벤트 발생");
 		}
 
 		if (e.getActionCommand() == "OK") {
-
-			// JPasswordField 이 부분을 어떻게 처리해야 될지 모르겠다.
-			// GetText로 가져오는게 막혀버렸으니...
-			/*
-			 * ChattingMember member = new ChattingMember();
-			 * 
-			 * member.setId(jtId.getText()); member.setName(jtName.getName());
-			 * member.setPassword(jpPass.getToolTipText());
-			 * member.setNickName(jtNick.getText());
-			 */
-			ChattingDao.InsertMember(jtId.getText(), jtName.getText(), jpPass.getPassword(), jtNick.getText());
-			this.dispose(); // 취소 이벤트 처리 완료!!!
-			System.out.println("회원가입 완료");
+			if (jpPass.equals(jpPassCon)) {
+				// JPasswordField 이 부분을 어떻게 처리해야 될지 모르겠다.
+				// GetText로 가져오는게 막혀버렸으니...
+				/*
+				 * ChattingMember member = new ChattingMember();
+				 * 
+				 * member.setId(jtId.getText()); member.setName(jtName.getName());
+				 * member.setPassword(jpPass.getToolTipText());
+				 * member.setNickName(jtNick.getText());
+				 */
+				ChattingDao.InsertMember(jtId.getText(), jtName.getText(), jpPass.getPassword(), jtNick.getText());
+				//this.dispose(); // 취소 이벤트 처리 완료!!!
+				System.out.println("패스워드 일치");
+				
+				System.out.println("회원가입 완료");
+			} else {
+				jpPassCon.setText("");
+				System.out.println("패스워드 불 일치");
+			}
 		}
 
 		if (e.getActionCommand() == "Cancel") {
