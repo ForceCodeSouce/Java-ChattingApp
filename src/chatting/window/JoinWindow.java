@@ -107,6 +107,7 @@ public class JoinWindow extends JFrame implements ActionListener {
 		}
 
 		if (e.getActionCommand() == "OK") {
+			//password check
 			if (jpPass.equals(jpPassCon)) {
 				// JPasswordField 이 부분을 어떻게 처리해야 될지 모르겠다.
 				// GetText로 가져오는게 막혀버렸으니...
